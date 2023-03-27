@@ -11,6 +11,7 @@ function generatePassword() {
     let lowerChar = "abcdefghijklmnopqrstuvwxyz";
     let upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let numChar = "1234567890";
+    let result = "";
 
     let passwordLength = prompt("How many characters would you like your password to be?");
     let passwordContent = "";
@@ -27,8 +28,28 @@ function generatePassword() {
     } if (confirm("Press ok if you would like your password to contain number. Press cancel to continue without numbers.")) {
         passwordContent = `${passwordContent}${numChar}`;
         console.log(passwordContent);
+        
+    } if (confirm("Press ok if you would like your password to contain Upper case letters. Press cancel to continue without Upper case letters.")) {
+        passwordContent = `${[passwordContent]}${upperChar}`;
+        console.log(passwordContent);
+        
+      } if (confirm("Press ok if you would like your password to contain lower case letters. Press cancel to continue without lower case letters."))
+      passwordContent = `${[passwordContent]}${lowerChar}`;
+      console.log(passwordContent);
 
-    } //if (confirm("Press ok if you would like your password to contain number. Press cancel to continue without numbers.")
+    if (passwordContent == "") {
+      alert("Please include a type of character selection for your new password and try again.");
+      console.log(passwordContent);
+      return;
+    }
+
+    for (i = 0; i < passwordContent.length; i++) {
+      result += passwordContent.charAt(Math.floor(Math.random() * passwordLength));
+    }
+
+    console.log(result);
+
+
 }
 
 // Write password to the #password input
