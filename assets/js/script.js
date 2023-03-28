@@ -24,13 +24,11 @@ function generatePassword() {
     } 
     
     if (confirm("Press ok if you would like your password to contain number. Press cancel to continue without numbers.")) {
-        passwordContent = `${passwordContent}${numChar}`;
-        
+        passwordContent = `${passwordContent}${numChar}`;      
     } 
     
     if (confirm("Press ok if you would like your password to contain Upper case letters. Press cancel to continue without Upper case letters.")) {
         passwordContent = `${passwordContent}${upperChar}`;
-        
     } 
       
     if (confirm("Press ok if you would like your password to contain lower case letters. Press cancel to continue without lower case letters.")) {
@@ -42,8 +40,8 @@ function generatePassword() {
       return(`Please try again.`);
     }
 
-    for (i = 0; i < passwordContent.length; i++) {
-      result += passwordContent.charAt(Math.floor(Math.random() * passwordLength));
+    for (i = 0; i <= passwordLength; i++) {
+      result += passwordContent.charAt(Math.floor(Math.random() * passwordContent.length));
     }
    
     return(result);
