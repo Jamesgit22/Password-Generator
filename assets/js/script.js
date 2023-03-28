@@ -7,7 +7,6 @@ var generateBtn = document.querySelector("#generate");
 
 
 function generatePassword() {
-    let allChar = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()?ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let lowerChar = "abcdefghijklmnopqrstuvwxyz";
     let upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let numChar = "1234567890";
@@ -16,12 +15,11 @@ function generatePassword() {
     let passwordLength = prompt("How many characters would you like your password to be?");
     let passwordContent = "";
 
-    if (passwordLength < 8) {
-      alert("Please enter try again and enter a number that is 8 or greater.");
-      return;
+    if (passwordLength < 8 || passwordLength > 128) {
+      alert("Please enter try again and enter a number 8 through 128");
+      return(`Please try again.`);
 
-    } else {
-      (confirm("Press ok if you would like your password to contain special characters. Press cancel to continue without special characters."));
+    } else if (confirm("Press ok if you would like your password to contain special characters. Press cancel to continue without special characters.")) {
         passwordContent = "!@#$%^&*()?";
     } 
     
@@ -36,12 +34,12 @@ function generatePassword() {
     } 
       
     if (confirm("Press ok if you would like your password to contain lower case letters. Press cancel to continue without lower case letters.")) {
-      passwordContent = `${[passwordContent]}${lowerChar}`;
+      passwordContent = `${passwordContent}${lowerChar}`;
     }
 
     if (passwordContent == "") {
       alert("Please include a type of character selection for your new password and try again.");
-      return;
+      return(`Please try again.`);
     }
 
     for (i = 0; i < passwordContent.length; i++) {
