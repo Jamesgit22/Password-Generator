@@ -47,6 +47,8 @@ function generatePassword() {
     return(result);
 }
 
+// Reminder: to try to test, make a condition block that does a regex to see if password content has one of a certain character set && if the result has at least one of that char set with.
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
